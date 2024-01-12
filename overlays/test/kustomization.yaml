@@ -6,6 +6,8 @@ commonLabels:
 
 resources:
   - ../../base
+  - pv-database.yaml
+  - database.yaml
 
 patches:
   - path: deployment.yaml

@@ -10,4 +10,16 @@ spec:
           image: ghcr.io/vehagn/deltahouse
           env:
             - name: JAVA_TOOL_OPTIONS
-              value: '-Dspring.profiles.active=local-h2'
+              value: '-Dspring.profiles.active=test-stonegarden'
+            - name: datasource-url
+              value: jdbc:postgresql://delta-test-db:5432/delta
+            - name: datasource-username
+              valueFrom:
+                secretKeyRef:
+                  name: delta.delta-test-db.credentials.postgresql.acid.zalan.do
+                  key: username
+            - name: datasource-password
+              valueFrom:
+                secretKeyRef:
+                  name: delta.delta-test-db.credentials.postgresql.acid.zalan.do
+                  key: password

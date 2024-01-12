@@ -1,0 +1,32 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: delta-test-db
+  namespace: delta-test
+  annotations:
+    argocd.argoproj.io/tracking-id: delta-test-db:acid.zalan.do/postgresql/postgresql:database/delta-test-db
+spec:
+  teamId: "acid"
+  volume:
+    size: 1Gi
+    storageClass: db-delta-test
+  postgresql:
+    version: "15"
+  numberOfInstances: 1
+  enableMasterLoadBalancer: true
+  allowedSourceRanges:
+    - 192.168.0.0/16
+    - 10.0.0.0/8
+  users:
+    delta:
+      - superuser
+      - createdb
+  preparedDatabases:
+    delta: { }
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      cpu: 500m
+      memory: 500Mi
