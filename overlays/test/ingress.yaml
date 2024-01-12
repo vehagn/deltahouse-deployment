@@ -1,0 +1,11 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: deltahouse
+spec:
+  routes:
+    - match: Host(`delta-test.stonegarden.dev`)
+      kind: Rule
+      services:
+        - name: deltahouse
+          port: 8080

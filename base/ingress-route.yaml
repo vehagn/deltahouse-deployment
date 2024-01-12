@@ -1,0 +1,13 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: deltahouse
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: ''
+      kind: Rule
+      services:
+        - name: deltahouse
+          port: 8080

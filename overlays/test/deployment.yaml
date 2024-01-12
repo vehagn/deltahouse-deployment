@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deltahouse
+spec:
+  template:
+    spec:
+      containers:
+        - name: deltahouse
+          image: ghcr.io/vehagn/deltahouse
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: '-Dspring.profiles.active=local-h2'
