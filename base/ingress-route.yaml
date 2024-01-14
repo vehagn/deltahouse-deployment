@@ -9,5 +9,5 @@ spec:
     - match: ''
       kind: Rule
       services:
-        - name: deltahouse
-          port: 8080
+        - name: frontend
+          port: 3000

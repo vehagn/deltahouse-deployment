@@ -1,11 +1,23 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: deltahouse
+  name: backend
 spec:
   type: ClusterIP
   ports:
-    - name: web
+    - name: backend
       port: 8080
+  selector:
+    app: deltahouse
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: ClusterIP
+  ports:
+    - name: frontend
+      port: 3000
   selector:
     app: deltahouse
