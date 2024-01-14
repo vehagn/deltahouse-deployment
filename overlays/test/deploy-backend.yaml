@@ -6,11 +6,6 @@ spec:
   template:
     spec:
       containers:
-        - name: epsilon
-          image: ghcr.io/vehagn/epsilon:main
-          env:
-            - name: NUXT_BACKEND_URL
-              value: http://localhost:8080
         - name: deltahouse
           image: ghcr.io/vehagn/deltahouse
           env:

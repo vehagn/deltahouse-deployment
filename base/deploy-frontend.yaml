@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: epsilon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: epsilon
+  template:
+    metadata:
+      labels:
+        app: epsilon
+    spec:
+      containers:
+        - name: epsilon
+          image: ghcr.io/vehagn/epsilon:main
+          imagePullPolicy: Always
+          ports:
+            - name: web
+              containerPort: 3000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limits:
+              cpu: 1000m
+              memory: 2Gi
